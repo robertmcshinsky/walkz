@@ -1,0 +1,90 @@
+* {box-sizing: border-box}
+body {font-family: Arial, Helvetica, sans-serif;}
+/* Style the navigation menu */
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 25%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center; /* If you want the text to be centered */
+  font-family: 'Righteous', cursive;
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+  background-color: #000;
+}
+
+/* Style the current/active link */
+.navbar a.active {
+  background-color: #4CAF50;
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left; /* If you want the text to be left-aligned on small screens */
+  }
+}
+
+/* Title of the whole page */
+.title {
+  text-align: center;
+  font-family: 'Righteous', cursive;
+}
+
+/* Split the screen in half */
+.split {
+  height: 70%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  margin-top: 150px;
+  font-family: 'Righteous', cursive;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color:  #4CAF50;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: green;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 250px;
+  border-radius: 50%;
+}
+
+h2, p {
+  color: white;
+}
