@@ -47,9 +47,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Style the image inside the centered container, if needed */
 .centered img {
-  width: 200px;
+  width: 250px;
   border-radius: 50%;
   border: 2px solid black;
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 h2, p {

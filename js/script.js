@@ -1,26 +1,49 @@
-console.log('Start')
+fetch('https://dog.ceo/api/breeds/list/all')
+  .then(response => response.json())
+  .then(data => console.log(data));
 
 
-const fetchDogImages = () => {
+  const BREEDS_URL = 'https://dog.ceo/api/breeds/list/all';
 
-const data = fetch('https://dog.ceo/api/breeds/image/random', function (data) {
-console.log(data);
-});
+  const select = document.querySelector('.breeds');
 
-fetchDogImages ();
+  fetch(BREEDS_URL)
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+      const breedsObject = data.message;
+      const breedsArray = Object.keys(breedsObject);
+      for (let i = 0; i < breedsArray.length; i++) {
+        const option = document.createElement('option');
+        option.value = breedsArray[i];
+        option.innerText = breedsArray[i];
+        select.appendChild(option);
+      }
+      console.log(breedsArray);
+    });
 
+  select.addEventListener('change', event => {
+    let url = `https://dog.ceo/api/breed/${event.target.value}/images/random`;
+    getDoggo(url);
+  });
 
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+  const img = document.querySelector('.dog-img');
+  const spinner = document.querySelector('.spinner');
 
+  const getDoggo = url => {
+    spinner.classList.add('show');
+    img.classList.remove('show');
+    fetch(url)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        img.src = data.message;
+      });
+  };
 
-$.getJSON('https://randomapi.com/api/nwd0grsr?key=YW53-XBVW-UISK-ZCM5', function (dataTwo) {
-  console.log(dataTwo);
-});
+  img.addEventListener('load', () => {
+    spinner.classList.remove('show');
+    img.classList.add('show');
+  });
